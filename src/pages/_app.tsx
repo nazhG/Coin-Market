@@ -5,26 +5,10 @@ import { WagmiConfig } from "wagmi";
 import type { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import {
-	arbitrum,
-	avalanche,
-	bsc,
-	fantom,
-	gnosis,
-	mainnet,
-	optimism,
-	polygon,
 	polygonMumbai
 } from "wagmi/chains";
 
 const chains = [
-	mainnet,
-	polygon,
-	avalanche,
-	arbitrum,
-	bsc,
-	optimism,
-	gnosis,
-	fantom,
 	polygonMumbai,
 ];
 
