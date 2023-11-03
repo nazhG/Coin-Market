@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useState } from "react";
 
 import Header from "@/comps/header";
 import Footer from "@/comps/footer";
@@ -9,15 +8,6 @@ import Info from "@/comps/infoPanel/info";
 import Stake from "@/comps/stake/stake";
 
 export default function Home() {
-  const [isConnectHighlighted, setIsConnectHighlighted] = useState(false);
-  const [isNetworkSwitchHighlighted, setIsNetworkSwitchHighlighted] =
-    useState(false);
-
-  const closeAll = () => {
-    console.log("closeAll");
-    setIsNetworkSwitchHighlighted(false);
-    setIsConnectHighlighted(false);
-  };
 
   return (
     <>
@@ -27,7 +17,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header isNetworkSwitchHighlighted isConnectHighlighted closeAll />
+      <Header />
       <main>
         {/* <MarketInfo /> */}
         {/* <Info /> */}

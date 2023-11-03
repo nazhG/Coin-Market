@@ -1,11 +1,17 @@
 import styles from "@/styles/Home.module.css";
 import Image from "next/image";
+import { useState } from "react";
 
-function Header(
-    isConnectHighlighted: boolean,
-    isNetworkSwitchHighlighted: boolean,
-    closeAll: () => void
-) {
+function Header() {
+  const [isConnectHighlighted, setIsConnectHighlighted] = useState(false);
+  const [isNetworkSwitchHighlighted, setIsNetworkSwitchHighlighted] =
+    useState(false);
+
+  const closeAll = () => {
+    console.log("closeAll");
+    setIsNetworkSwitchHighlighted(false);
+    setIsConnectHighlighted(false);
+  };
   return (
     <header className="mainHeader">
       <div
