@@ -4,8 +4,14 @@ import {
 import { abi as STAKINGABI } from "@/contracts/Stake.json"
 
 const useGetStake = (stakingAddr: `0x${string}`, accountAddr: `0x${string}`) => {
-
-    const { data: stake  } =
+    const toObject = (ob: unknown) => {
+        return JSON.parse(JSON.stringify(ob, (key, value) =>
+            typeof value === 'bigint'
+                ? value.toString()
+                : value // return everything else unchanged
+        ));
+    }
+    const { data: stake } =
         useContractRead({
             address: stakingAddr,
             abi: STAKINGABI,
@@ -16,7 +22,18 @@ const useGetStake = (stakingAddr: `0x${string}`, accountAddr: `0x${string}`) => 
             watch: true,
         });
 
-    let _stake = JSON.parse(JSON.stringify(stake));
+    if (!stake) {
+        return {
+            stake: {
+                tier: 0,
+                amount: 0,
+                startTimestamp: 0,
+                nextBidUp: 0,
+            }
+        };
+    }
+
+    let _stake = toObject(stake);
 
     return {
         stake: {
