@@ -1,96 +1,24 @@
 import Head from "next/head";
-import Image from "next/image";
 import { useState } from "react";
-import { useAccount } from "wagmi";
-import { constants, BigNumber } from "ethers";
-// Styles
-import styles from "@/styles/Home.module.css";
-// Components
-import StakeInfo from "@/components/stake/stakeInfo";
-// Custom Hooks
-import {
-  useApprove,
-  useAllowance,
-  useBalance,
-  useGetStake,
-  useMakeStake,
-} from "@/hooks/";
+
+import Header from "@/comps/header";
+import Footer from "@/comps/footer";
+
+import MarketInfo from "@/comps/infoPanel/market";
+import Info from "@/comps/infoPanel/info";
+import Stake from "@/comps/stake/stake";
 
 export default function Home() {
+  const [isConnectHighlighted, setIsConnectHighlighted] = useState(false);
   const [isNetworkSwitchHighlighted, setIsNetworkSwitchHighlighted] =
     useState(false);
-  const [isConnectHighlighted, setIsConnectHighlighted] = useState(false);
-  const [StakeTierSelected, setStakeTierSelected] = useState(0);
-
-  const tokenAddr = "0x879990b076308660393607347B19B4E1B3e3eD59";
-  const stakeAddr = "0xF434D92B47688627A0264D70Bc99aAE8090b73c0";
-
-  const { address, isDisconnected } = useAccount();
-
-  const stakeTries = [
-    {
-      days: 120,
-      minAmount: 50,
-      ROI: 1,
-    },
-    {
-      days: 150,
-      minAmount: 150,
-      ROI: 1.1,
-    },
-    {
-      days: 180,
-      minAmount: 500,
-      ROI: 1.4,
-    },
-  ];
-
-  const parse = (amount: number) =>
-    BigNumber.from(amount).pow(BigNumber.from(10));
-
-  // Get User Token Balance
-  const { balance } = useBalance(tokenAddr, address || constants.AddressZero);
-
-  // Get Approval
-  // Amount of tokens approved for the contract
-  const { allowanceAmount } = useAllowance(
-    tokenAddr,
-    address || constants.AddressZero,
-    stakeAddr
-  );
-
-  // Set Approval
-  // Ask the user to approve the contract to spend their tokens
-  const { approveData, approveLoading, approve, approveError } = useApprove(
-    tokenAddr,
-    address || constants.AddressZero,
-    parse(100)
-  );
-
-  // Get Stake
-  // Amount of tokens staked
-  const { stakeAmount } = useGetStake(
-    stakeAddr,
-    address || constants.AddressZero
-  );
-
-  // Make Stake
-  // Ask the user to stake their tokens
-  const {
-    stakeData,
-    stakeLoading,
-    stake: makeStake,
-    stakeError,
-  } = useMakeStake(stakeAddr, 0, parse(100), constants.AddressZero);
-
-  // useEffect(() => {
-  // }
-  // , [address]);
 
   const closeAll = () => {
+    console.log("closeAll");
     setIsNetworkSwitchHighlighted(false);
     setIsConnectHighlighted(false);
   };
+
   return (
     <>
       <Head>
@@ -99,115 +27,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header>
-        <div
-          className={styles.backdrop}
-          style={{
-            opacity: isConnectHighlighted || isNetworkSwitchHighlighted ? 1 : 0,
-          }}
-        />
-        <div className={styles.header}>
-          <div className={styles.logo}>
-            <Image
-              src="/logo.svg"
-              alt="WalletConnect Logo"
-              height="32"
-              width="203"
-            />
-          </div>
-          <div className={styles.buttons}>
-            <div
-              onClick={closeAll}
-              className={`${styles.highlight} ${
-                isNetworkSwitchHighlighted ? styles.highlightSelected : ``
-              }`}
-            >
-              <w3m-network-button />
-            </div>
-            <div
-              onClick={closeAll}
-              className={`${styles.highlight} ${
-                isConnectHighlighted ? styles.highlightSelected : ``
-              }`}
-            >
-              <w3m-button />
-            </div>
-          </div>
-        </div>
-      </header>
-      <div className={styles.main}>
-        <div className={styles.stakeWapper}>
-          {stakeTries.map((stakeTier, i) => {
-            return (
-              <div
-                key={i}
-                onClick={() => setStakeTierSelected(i)}
-                className={styles.wrapperParcialWidth}
-              >
-                <StakeInfo
-                  days={stakeTier.days}
-                  minAmount={stakeTier.minAmount}
-                  ROI={stakeTier.ROI}
-                />
-              </div>
-            );
-          })}
-          <button className={styles.wrapperFullWidth}>
-            Select 👉 staking to {stakeTries[StakeTierSelected].days} Roi{" "}
-            {stakeTries[StakeTierSelected].ROI}%:{" "}
-            <input type="number" name="amount" id="amount" />
-          </button>
-          <button
-            className={styles.wrapperFullWidth}
-            disabled={makeStake == null || isDisconnected}
-            onClick={() => makeStake!()}
-          >
-            INICIAR STAKING
-            {stakeError && (
-              <p>
-                Calling that contract function will fail for this reason:
-                {stakeError.reason ?? stakeError.message}
-              </p>
-            )}
-          </button>
-          <button className={styles.wrapperParcialWidth}>REINVEST</button>
-          <button className={styles.wrapperParcialWidth}>WITHDRAW</button>
-          <button className={styles.wrapperParcialWidth}>UNSTAKE</button>
-          <div className={styles.wrapperParcialWidth}>
-            {approveLoading && (
-              <p>Please confirm the transaction on your wallet</p>
-            )}
-            {approveData && (
-              <p>
-                The transaction was sent! Here is the hash: {approveData.hash}
-              </p>
-            )}
-            {!approveLoading && (
-              <button
-                disabled={approve == null || isDisconnected}
-                onClick={() => approve!()}
-              >
-                Approve
-              </button>
-            )}
-            {approveError && (
-              <p>
-                Calling that contract function will fail for this reason:
-                {approveError.reason ?? approveError.message}
-              </p>
-            )}
-          </div>
-          <div className={styles.wrapperParcialWidth}>
-            {balance != null && <p>Balance {String(balance)} USDT</p>}
-          </div>
-          <div className={styles.wrapperParcialWidth}>
-            {allowanceAmount != null && (
-              <p>Aproved {String(allowanceAmount)} USDT</p>
-            )}
-          </div>
-          <div className={styles.wrapperParcialWidth}>{stakeAmount}</div>
-        </div>
-      </div>
+      <Header isNetworkSwitchHighlighted isConnectHighlighted closeAll />
+      <main>
+        {/* <MarketInfo /> */}
+        {/* <Info /> */}
+        <Stake />
+      </main>
+      <Footer />
     </>
   );
 }

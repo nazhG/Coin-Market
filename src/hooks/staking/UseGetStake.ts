@@ -5,7 +5,7 @@ import { abi as STAKINGABI } from "@/contracts/Stake.json"
 
 const useGetStake = (stakingAddr: `0x${string}`, accountAddr: `0x${string}`) => {
 
-    const { data: stake} =
+    const { data: stake } =
     useContractRead({
         address: stakingAddr,
         abi: STAKINGABI,
