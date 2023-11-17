@@ -13,9 +13,9 @@ function StakeInfo({
 }) {
   return (
     <div className={styles.wrapper}>
-      <div className={`${styles.container} flex center column`}>
-        <h1 className="text-center text-large">STAKING<br/> for: {days} days</h1>
-        <div className={`${styles.content} text-large`}
+      <div className={`pt-8 pb-1 flex flex-col`}>
+        <h1 className="text-center text-xl">STAKING<br/> For {days} days</h1>
+        <div className={`${styles.content} text-2xl font-bold`}
         style={{
           width: "100%",
           textAlign: "center",
@@ -23,7 +23,7 @@ function StakeInfo({
         >
             ROI Daily {ROI}%
         </div>
-        <div className={`${styles.content} text-medium`}>
+        <div className={`${styles.content} text-center text-base font-semibold`}>
             Stake from ${minAmount}
         </div>
       </div>

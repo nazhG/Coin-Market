@@ -122,8 +122,8 @@ const Stake = () => {
   };
 
   return (
-    <section id="stake" className="flex row">
-      <div className="col-4 text-large bold px-1 my-8">
+    <section id="stake" className="flex row bg-stake">
+      <div className="w-1/3 text-large bold px-1 my-8">
         <p>
           Maximiza tus rendimientos con el sistema de Staking. Obtén ganancias
           de los mercados de Divisas y Cripto manteniendo tus fondos con
@@ -131,23 +131,41 @@ const Stake = () => {
         </p>
         <br />
         <p className="flex my-3">
-          <FaCheckCircle className="checkCircle text-xx-large" />
+          <Image
+            src="/CHULO_READY_FONDO_TRANS.png"
+            alt="Check"
+            className="mr-2 h-full"
+            height="32"
+            width="32"
+          />
           Rendimientos en Dolares
         </p>
         <p className="flex my-3">
-          <FaCheckCircle className="checkCircle text-xx-large" />
+          <Image
+            src="/CHULO_READY_FONDO_TRANS.png"
+            alt="Check"
+            className="mr-2 h-full"
+            height="32"
+            width="32"
+          />
           Acreditación afectiva al retirar tus fondos
         </p>
         <p className="flex my-3">
-          <FaCheckCircle className="checkCircle text-xx-large" />
+          <Image
+            src="/CHULO_READY_FONDO_TRANS.png"
+            alt="Check"
+            className="mr-2 h-full"
+            height="32"
+            width="32"
+          />
           Soporte y asistencia
         </p>
       </div>
-      <div className="col-8">
-        <h1 className="flex center text-xx-large">
+      <div className="w-2/3">
+        <h1 className="flex justify-center text-3xl font-semibold">
           <i>STAKING</i>
         </h1>
-        <h2 className="flex center text-x-large">
+        <h2 className="flex justify-center text-2xl font-semibold">
           <i>Profit staking in market</i>
         </h2>
         <div className={styles.main}>
@@ -159,15 +177,15 @@ const Stake = () => {
                   onClick={() => {
                     setStakeTierSelected(i);
                   }}
-                  className={`${styles.wrapperParcialWidth} relative ${
+                  className={`${styles.wrapperParcialWidth} px-10 relative pb-0 ${
                     StakeTierSelected === i ? "elevado" : ""
                   }`}
                 >
                   <Image
-                    src="/COIN.svg"
-                    alt="WalletConnect Logo"
-                    height="32"
-                    width="203"
+                    src="/ISOTIPO_PARA_FONDO_OSCURO.png"
+                    alt="Logo"
+                    height="80"
+                    width="80"
                     className="absolute stake-logo"
                   />
                   <StakeInfo
@@ -180,7 +198,7 @@ const Stake = () => {
               );
             })}
             <button
-              className={`${styles.wrapperFullWidth} ${styles.input} text-medium`}
+              className={`${styles.wrapperFullWidth} ${styles.input} text-medium h-fit`}
             >
               <span>Ingrese el monto para staking : &nbsp;</span>
               <input
@@ -190,11 +208,11 @@ const Stake = () => {
                 placeholder="Ingrese cantidad en USDT a invertir"
                 onChange={(e) => setAmount(Number(e.target.value))}
                 value={amount}
-                className={`${styles.amount} text-medium py-4`}
+                className={`${styles.amount} text-medium`}
               />
             </button>
             <button
-              className={`${styles.wrapperFullWidth} ${styles.cursorPointer} btn py-4 text-medium`}
+              className={`${styles.wrapperFullWidth} ${styles.cursorPointer} btn py-4 text-medium  flex justify-center`}
               disabled={isDisconnected || stakeLoading || approveLoading}
               onClick={() => {
                 if (
@@ -213,8 +231,8 @@ const Stake = () => {
               }}
             >
               INICIAR STAKING
-              {isDisconnected && <p>Conectata tu billetera!</p>}
-              {stakeError && <p>{msg()}</p>}
+              {isDisconnected && <p>&nbsp;Conectata tu billetera!</p>}
+              {stakeError && <p> {msg()}</p>}
             </button>
             <button
               className={`${styles.wrapperParcialWidth} btn py-4 text-medium`}
@@ -233,8 +251,8 @@ const Stake = () => {
               UNSTAKE
             </button>
 
-            <div
-              className={`${styles.wrapperFullWidth} ${styles.cursorPointer} btn py-4 text-medium`}
+            {/* <div
+              className={`${styles.wrapperFullWidth} ${styles.cursorPointer} btn py-2 text-medium`}
             >
               {stakeAmount !== undefined && stakeAmount !== null
                 ? `
@@ -244,7 +262,7 @@ const Stake = () => {
                 will Need BidUp: ${stakeAmount.nextBidUp}
                 `
                 : "no stake"}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

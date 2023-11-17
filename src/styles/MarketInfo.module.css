@@ -1,11 +1,16 @@
 .layout {
   display: grid;
-  grid-template-rows: 1rem 1fr;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  grid-template-rows: 2rem 1fr 2rem;
+  grid-template-columns: 35% 30% 35%;
+  overflow: hidden;
 }
 
 .header {
   grid-row: 1;
   grid-column: 1 / 4;
+}
+
+.footer {
+  grid-row: 3;
+  grid-column: 3 / 4;
 }

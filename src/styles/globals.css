@@ -1,4 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Avenir+Next:wght@400;500;600;700&family=Fira+Code:wght@400;700&family=Fira+Mono:wght@400;700&family=Manrope:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
 
 :root {
   --font-base: "Avenir Next", "Manrope", sans-serif;
@@ -20,10 +24,13 @@
   --shadow-lg: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
   --rounded-sm: 0.5rem;
   --rounded-md: 1.5rem;
-  --yellow: #ffc41e;
-  --blue: #155183;
+  --yellow: #ffbf1c;
+  --blue: #0e334f;
   --black: #080000;
-  --grey: #191921;
+  --grey: #010920;
+  --blue-arcade: #0c0d50;
+  --blue-ligth-arcade: #1b2ddd;
+  --white: #f0f0f1;
 }
 
 * {
@@ -41,6 +48,7 @@ body,
 #__next {
   min-height: 100% !important;
   height: 100%;
+  overflow: hidden;
 }
 
 body {
@@ -86,105 +94,25 @@ header {
 /**********/
 
 .mainHeader {
-  display: flex;
   height: 10vh;
 }
 
 main {
-  padding: 0 1rem;
   height: 85vh;
   overflow-y: scroll;
 }
 
 main section {
+  padding: 0.75rem;
   height: 100%;
 }
 
 .mainFooter {
-  padding: 1rem;
   height: 5vh;
 }
 
 .light {
   color: var(--color-grey-100);
-}
-
-.p-1 {
-  padding: 0.25rem;
-}
-/** padding X axis */
-.px-1 {
-  padding: 0 0.25rem;
-}
-
-.py-4 {
-  padding: 1rem 0;
-}
-
-.my-3 {
-  margin: 0.75rem 0;
-}
-
-.my-8 {
-  margin: 7rem 0;
-}
-
-.mt-4 {
-  margin-top: 1rem;
-}
-
-.col-3 {
-  width: 25%;
-}
-
-.col-4 {
-  width: 33.33%;
-}
-
-.col-6 {
-  width: 50%;
-}
-
-.col-8 {
-  width: 66.66%;
-}
-
-.col-9 {
-  width: 75%;
-}
-
-.col-12 {
-  width: 100%;
-} 
-
-.relative {
-  position: relative;
-}
-
-.absolute {
-  position: absolute;
-}
-
-.flex {
-  display: flex;
-}
-
-.center {
-  justify-content: center;
-  align-items: center;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.row {
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.column {
-  flex-direction: column;
 }
 
 .text-medium {
@@ -204,7 +132,6 @@ main section {
 }
 
 @media (max-width: 1024px) {
-  
   .text-medium {
     font-size: 0.75rem;
   }
@@ -227,11 +154,11 @@ main section {
   }
 
   .container {
-    padding: 0.70rem 0;
+    padding: 0.7rem 0;
   }
 
   .content {
-    margin-top: 0.70rem;
+    margin-top: 0.7rem;
   }
 }
 
@@ -248,7 +175,7 @@ main section {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--blue-arcade);
 }
 
 /* Handle */
@@ -261,10 +188,6 @@ main section {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
-
-
-
 
 .checkCircle {
   color: var(--blue);
@@ -282,8 +205,7 @@ main section {
 }
 
 .stake-logo {
-  top: -1.5rem;
-  height: 3rem;
+  top: -2.5rem;
   left: 50%;
   transform: translate(-50%, 0);
 }
@@ -301,7 +223,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -313,4 +235,83 @@ input {
   background-color: transparent;
   border: none;
   color: white;
+}
+
+.yellow {
+  color: var(--yellow);
+}
+
+.white {
+  color: var(--white);
+}
+
+.bg-blue {
+  background-color: var(--blue);
+}
+
+.bg-dark-grey {
+  background-color: var(--grey);
+}
+
+.bg-blue-arcade {
+  background-color: var(--blue-arcade);
+}
+
+.bg-blue-ligth-arcade {
+  background-color: var(--blue-ligth-arcade);
+}
+
+.transicion {
+  transition: all 0.3s ease;
+}
+
+.mt-10-vh {
+  margin: 10vh 0;
+}
+
+.poligono {
+  clip-path: polygon(
+    0 50%,
+    15px 0,
+    100% 0,
+    100% 50%,
+    100% 50%,
+    calc(100% - 15px) 100%,
+    0 100%
+  );
+}
+
+.smaller {
+  transform: scale(0.975, 0.935);
+}
+
+.iluminado {
+  box-shadow: 0 0 20px 1px var(--white);
+}
+
+.bg-gradient-green-45 {
+  background: rgb(18, 26, 28);
+  background: linear-gradient(
+    45deg,
+    rgba(18, 26, 28, 1) 0%,
+    rgba(21, 56, 60, 1) 75%
+  );
+}
+
+.bg-stake {
+  background-image: url("/FONDO_PANEL_3.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-panel2 {
+  background-image: url("/FONDO_PANEL_2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-panel4 {
+  background-image: url("/FONDO_PANEL_4.jpg");
+  background-size: cover;
+  background-position: center;
 }
