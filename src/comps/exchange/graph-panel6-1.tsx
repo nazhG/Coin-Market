@@ -16,7 +16,7 @@ function HeatGraph() {
           "blockColor": "change",
           "locale": "es",
           "symbolUrl": "",
-          "colorTheme": "light",
+          "colorTheme": "dark",
           "hasTopBar": false,
           "isDataSetEnabled": false,
           "isZoomEnabled": true,

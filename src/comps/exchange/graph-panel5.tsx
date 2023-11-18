@@ -30,7 +30,7 @@ const Graph5 = (props: { name: string; id: string }) => {
         async
       >
         {JSON.stringify({
-          colorTheme: "light",
+          colorTheme: "dark",
           dateRange: "12M",
           showChart: true,
           locale: "es",

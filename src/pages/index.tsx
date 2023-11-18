@@ -2,13 +2,7 @@ import Head from "next/head";
 
 import Header from "@/comps/header";
 import Footer from "@/comps/footer";
-
-import MarketInfo from "@/comps/infoPanel/market";
-import Info from "@/comps/infoPanel/info";
-import Stake from "@/comps/stake/stake";
-import Panel4 from "@/comps/infoPanel/panel4";
-import Panel5 from "@/comps/infoPanel/panel5";
-import Panel6 from "@/comps/infoPanel/panel6";
+import { Main } from "@/comps/main"
 
 import { GlobalProvider } from "@/context/";
 
@@ -22,14 +16,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main id="main">
-        <MarketInfo />
-        <Info />
-        <Stake />
-        <Panel4 />
-        <Panel5 />
-        <Panel6 />
-      </main>
+      <Main />
       <Footer />
     </GlobalProvider>
   );

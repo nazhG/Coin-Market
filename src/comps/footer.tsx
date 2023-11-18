@@ -12,7 +12,6 @@ function Footer() {
           src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
           onLoad={(e) => {
             const graph = document.getElementById(`tradingview-widget-tape`);
-            console.log(graph);
             
             if (graph) {
               document.getElementById("tape")?.appendChild(graph);

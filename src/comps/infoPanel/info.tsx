@@ -19,7 +19,7 @@ const Info = () => {
           <Image
             src="/Mas_Informacion.png"
             alt="Check"
-            className="ml-2"
+            className="ml-2 h-fit"
             height="32"
             width="32"
           />
@@ -29,7 +29,7 @@ const Info = () => {
           <Image
             src="/Mas_Informacion.png"
             alt="Check"
-            className="ml-2"
+            className="ml-2 h-fit"
             height="32"
             width="32"
           />
@@ -45,7 +45,7 @@ const Info = () => {
           <Image
             src="/Mas_Informacion.png"
             alt="Check"
-            className="ml-2"
+            className="ml-2 h-fit"
             height="32"
             width="32"
           />
@@ -55,7 +55,7 @@ const Info = () => {
           <Image
             src="/Mas_Informacion.png"
             alt="Check"
-            className="ml-2"
+            className="ml-2 h-fit"
             height="32"
             width="32"
           />
