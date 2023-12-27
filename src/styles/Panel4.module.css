@@ -1,0 +1,6 @@
+.layout {
+  display: grid;
+  overflow: hidden;
+  min-height: 100%;
+  column-gap: 6rem;
+}

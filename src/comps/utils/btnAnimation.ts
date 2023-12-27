@@ -1,0 +1,1 @@
+export const btnAnimation = "transition duration-300 transform hover:scale-110";

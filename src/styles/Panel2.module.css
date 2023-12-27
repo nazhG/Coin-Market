@@ -1,0 +1,29 @@
+.layout {
+  display: grid;
+  overflow: hidden;
+  min-height: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 3rem auto 1fr;
+  column-gap: 6rem;
+  row-gap: 0.5rem;
+  grid-template-areas:
+    ".     titulo"
+    "video info  "
+    "video parafo";
+}
+
+.titulo {
+  grid-area: titulo;
+}
+
+.video {
+  grid-area: video;
+}
+
+.info {
+  grid-area: info;
+}
+
+.parafo {
+  grid-area: parafo;
+}

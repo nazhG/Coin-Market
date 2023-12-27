@@ -1,0 +1,51 @@
+.layout {
+  display: grid;
+  overflow: hidden;
+  min-height: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 4.5rem max-content 3rem 3rem 2em;
+  column-gap: 1.5rem;
+  row-gap: 0.5rem;
+  grid-template-areas:
+    "titulo   titulo    titulo"
+    "stake1   stake2    stake3"
+    "select   select    select"
+    "iniciar  iniciar   iniciar"
+    "reinvest withdraw  unstake";
+}
+
+.titulo {
+  grid-area: titulo;
+}
+
+.stake1 {
+  grid-area: stake1;
+}
+
+.stake2 {
+  grid-area: stake2;
+}
+
+.stake3 {
+  grid-area: stake3;
+}
+
+.select {
+  grid-area: select;
+}
+
+.iniciar {
+  grid-area: iniciar;
+}
+
+.reinvest {
+  grid-area: reinvest;
+}
+
+.withdraw {
+  grid-area: withdraw;
+}
+
+.unstake {
+  grid-area: unstake;
+}

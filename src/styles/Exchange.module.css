@@ -1,0 +1,42 @@
+.layout {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 30px 1fr 1fr 60px;
+  min-height: 100%;
+  column-gap: 3rem;
+  row-gap: 0.5rem;
+  grid-template-areas:
+    "redes  .        .        "
+    "titulo exchange grafico  "
+    "lista  exchange imagen   "
+    ".      .        subtitulo";
+}
+
+.redes {
+  grid-area: redes;
+}
+
+.titulo {
+  grid-area: titulo;
+}
+
+.exchange {
+  grid-area: exchange;
+}
+
+.grafico {
+  grid-area: grafico;
+}
+
+.lista {
+  grid-area: lista;
+}
+
+.imagen {
+  grid-area: imagen;
+}
+
+.subtitulo {
+  grid-area: subtitulo;
+}

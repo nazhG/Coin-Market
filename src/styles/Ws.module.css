@@ -1,0 +1,64 @@
+.position {
+  position: fixed;
+  z-index: 9000;
+  bottom: 3.4rem;
+  right: 1.5rem;
+  overflow: hidden;
+  display: grid;
+  justify-items: flex-end;
+}
+
+.relative {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  margin-right: 10px;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  display: flex;
+  overflow: hidden;
+}
+
+.bubble {
+  background: linear-gradient(180deg, #7ddf8b 0%, #28a82f 100%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.25rem;
+  cursor: pointer;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.bubble:hover {
+  opacity: 1;
+}
+
+.paragraph {
+  color: transparent;
+  font-size: 1rem;
+  right: -400px;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  border-radius: 2rem;
+  background-color: #28a82f;
+  align-self: center;
+  padding: 0.4rem;
+  padding-left: 1rem;
+}
+
+.position:hover .relative {
+  width: 400px;
+}
+
+.position:hover .paragraph {
+  color: #fff;
+  right: 0px;
+  width: 400px;
+}
